@@ -8,7 +8,11 @@
 
 using namespace std;
 
-
+/**
+ * @brief a higher resolution sleep function than is provided by windows.h
+ * 
+ * @param seconds 
+ */
 void preciseSleep(double seconds) {
     using namespace std;
     using namespace std::chrono;
@@ -39,6 +43,14 @@ void preciseSleep(double seconds) {
     while ((high_resolution_clock::now() - start).count() / 1e9 < seconds);
 }
 
+/**
+ * @brief given the change in position of the mouse, this function will move the mouse relative 
+ * to its current position by the amount of the passed parameters, and take the duration passed to do it
+ * 
+ * @param deltaX change in x position
+ * @param deltaY change in y position
+ * @param duration delay in ms
+ */
 void moveCursorRelative(int deltaX, int deltaY, unsigned int duration) {
     POINT startingMousePosition;
     GetCursorPos(&startingMousePosition);
